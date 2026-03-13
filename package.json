@@ -4,10 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"node server.js\"",
+    "dev:kill": "kill-port 3000 && concurrently \"vite\" \"node server.js\"",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "node server.js"
+    "start": "node server.js",
+    "stop": "kill-port 3000"
   },
   "dependencies": {
     "@antv/g2": "^5.4.8",
@@ -28,6 +30,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
+    "concurrently": "^9.2.1",
+    "kill-port": "^2.0.1",
     "vite": "^6.0.5"
   }
 }
